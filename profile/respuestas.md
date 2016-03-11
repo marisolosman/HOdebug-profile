@@ -86,3 +86,7 @@ Primero tengo que resolver el bug. No lo hice, sino que le di memoria ilimitada 
 mirando el registro que genero con perf:
 tengo el % que representa cada proceso siendo la primera asignacion la de mayor porcentaje
 
+
+Miro el profile 2
+
+El problema esta cuando defino dim porque necesita imput del usuario y si no pongo un valor me va a apuntar a cualquier lado y despues explota al generar variables de dimension dim
