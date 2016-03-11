@@ -34,3 +34,32 @@ Siguiendo con la misma logica para los otros dos codigos...
 Ahora corre bien y pasa lo mismo que con el caso 1
 El test 3 no tiene problemas porque esta linkeado a m
 
+SEGMENTATION FAULT
+
+elijo el codigo fortran porque hubo un tiempo en el que use fortran
+
+bueno, algo pasa con gfortran que no me reconoce la opcion fpp...
+Me mudo a C
+Pude compilar y correr small y big
+small corre sin problemas
+big me tira un error de violacion de segmento
+Corro el codigo usando gdb (creo que tengo que tomar mas clases de gdb)
+los errores que me tiran es de lectura de la varible, no puede acceder a la
+memoria y la direccion de la memoria
+
+ejecutando unlimit -s unlimited
+se toma su tiempo, de hecho sigue....
+mientras miro ulimit
+la ayuda me dice que setea los limites del usuario, asi que ahora es ILIMITADO
+me dice que es obsoleta y hay nuevos comandos
+
+Ahora termino el codigo y no me tiro error
+
+Ejecuto en una nueva terminal y me tira error
+miro cambios en ulimit antes y despues de -s. Antes, stack size, era acotado, ahora es unlimited como otros parametros
+mirando un poco que hace, creo que lo que me deja hacer es no limitar la cantidad de datos en el stack
+
+Respecto a si esta solucion implica haber debuggeado, considero que no. Debuggear implica que mi codigo es lo suficientemente eficiente para no tener problemas de stack sin necesidad de cambiar la configuracion de stack. Lo que hice con ulimit fue decir, mi codigo es ineficiente entonces acomodo mi sistema a este codigo malo.
+
+Me quedo mirar la carpeta bugs, valgrind y funny pero ya arranca boca
+ 
