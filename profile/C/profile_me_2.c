@@ -13,10 +13,11 @@ int main( int argc, char * argv[] )
   size_t dim;
   
   dim = atoi(argv[1]);
- 
+
   a = (double *) malloc( dim * sizeof( double ) );
   b = (double *) malloc( dim * sizeof( double ) );
   c = (double *) malloc( dim * sizeof( double ) );
+
 
   for( i = 0; i < dim; i++ ){
 
