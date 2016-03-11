@@ -62,4 +62,38 @@ mirando un poco que hace, creo que lo que me deja hacer es no limitar la cantida
 Respecto a si esta solucion implica haber debuggeado, considero que no. Debuggear implica que mi codigo es lo suficientemente eficiente para no tener problemas de stack sin necesidad de cambiar la configuracion de stack. Lo que hice con ulimit fue decir, mi codigo es ineficiente entonces acomodo mi sistema a este codigo malo.
 
 Me quedo mirar la carpeta bugs, valgrind y funny pero ya arranca boca
+
+Miro Valgrind
+
+Si lo corro con gcc opcion -O3 y miro con top la memoria. El proceso consume el 98%!!!!!!
+
+Ahora pruebo con valgrind
+si lo corro con valgrind me tira un memory error detector pero no corta
+
+Si uso top, veo que sigue consumiendo mucho, pero ahora se de donde viene
+
+Para saber de donde viene, tengo que compilar con la opcin -g Además, tuve que achicar el for final donde estaba la funcion mat_mul
+
+HEAP SUMMARY:
+==4887==     in use at exit: 440,000 bytes in 11 blocks
+==4887==   total heap usage: 13 allocs, 2 frees, 520,000 bytes allocated
+==4887== 
+==4887== 440,000 bytes in 11 blocks are definitely lost in loss record 1 of 1
+==4887==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4887==    by 0x4005D6: mat_Tmat_mul (source1.c:30)
+==4887==    by 0x4007C8: main (source1.c:59)
+==4887== 
+==4887== LEAK SUMMARY:
+==4887==    definitely lost: 440,000 bytes in 11 blocks
+==4887==    indirectly lost: 0 bytes in 0 blocks
+==4887==      possibly lost: 0 bytes in 0 blocks
+==4887==    still reachable: 0 bytes in 0 blocks
+==4887==         suppressed: 0 bytes in 0 blocks
+
+
+ 
+
+miro funny:
+Si corro el codigo previamente compilado con la opcion -DDEBUG me imprime la frase IM HERE pero tira una violacion de segmento despues.
+Si lo corro sin la opcion debugg no me imprime el mensaje sino que directamente me tira el error de violacion de segmento
  
